@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+PRODUCTS
+<form method="post" action="products/update">
+    <h4>UPDATE PRODUCT</h4>
+    <input type="number" name="idProd" placeholder="id"/>
+    <input type="number" name="priceProd" placeholder="new price"/>
+    <input type="number" name="weightProd" placeholder="new weight"/>
+    <input type="submit" value="UPDATE"/>
+</form>
+
+<form method="post" action="products/add">
+    <h4>ADD NEW PRODUCT</h4>
+    <input type="text" name="nameProdNew" placeholder="name"/>
+    <input type="number" name="priceProdNew" placeholder="price"/>
+    <input type="number" name="weightProdNew" placeholder="weight"/>
+    <input type="submit" value="ADD"/>
+</form>
+
+
+<form method="post" action="products/delete">
+    <h4>DELETE PRODUCT</h4>
+    <input type="number" name="idProdToDel" placeholder="id for del"/>
+    <input type="submit" value="DELETE"/>
+</form>
+
+<table style="border: black 2px solid">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>weight</th>
+    </tr>
+
+    <tr th:each="prod: ${productss}">
+        <td th:text="${prod.id}"></td>
+        <td th:text="${prod.nameOfProduct}"></td>
+        <td th:text="${prod.priceForOne}"></td>
+        <td th:text="${prod.weight}"></td>
+
+    </tr>
+</table>
+</body>
+</html>
