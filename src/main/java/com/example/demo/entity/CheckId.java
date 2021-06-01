@@ -12,6 +12,10 @@ public class CheckId {
     public CheckId() {
     }
 
+    public CheckId(List<CheckWithProducts> products) {
+        this.products = products;
+    }
+
     @OneToMany
     @JoinColumn(name = "check_id")
     private List<CheckWithProducts> products;

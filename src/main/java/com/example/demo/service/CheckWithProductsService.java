@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 
+import com.example.demo.entity.CheckId;
 import com.example.demo.entity.CheckWithProducts;
 import com.example.demo.entity.ProductInStore;
 import com.example.demo.repos.CheckIdRepo;
@@ -33,6 +34,9 @@ public class CheckWithProductsService {
     public ProductInStore findByName(String name) {
         return repoStore.findByNameOfProduct(name);
     }
+
+
+
 
     @Transactional
     public void createCheck(Iterable<ProductInStore> products) {

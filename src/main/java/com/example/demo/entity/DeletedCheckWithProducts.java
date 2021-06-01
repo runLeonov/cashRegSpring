@@ -47,17 +47,6 @@ public class DeletedCheckWithProducts {
         this.checkId = checkId;
     }
 
-    @Override
-    public String toString() {
-        return "DeletedCheckWithProducts{" +
-                "id=" + id +
-                ", checkId=" + checkId +
-                ", nameOfProd='" + nameOfProd + '\'' +
-                ", weight=" + weight +
-                ", price=" + price +
-                '}';
-    }
-
     public String getNameOfProd() {
         return nameOfProd;
     }
@@ -80,5 +69,16 @@ public class DeletedCheckWithProducts {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "DeletedCheckWithProducts{" +
+                "id=" + id +
+                ", checkId=" + checkId +
+                ", nameOfProd='" + nameOfProd + '\'' +
+                ", weight=" + weight +
+                ", price=" + price +
+                '}';
     }
 }

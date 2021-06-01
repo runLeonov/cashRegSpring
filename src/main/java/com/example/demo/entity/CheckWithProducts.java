@@ -42,6 +42,23 @@ public class CheckWithProducts {
     )
     private LocalDateTime dateTime;
 
+    public CheckWithProducts() {
+    }
+
+    public CheckWithProducts(Long checkId,
+                             String nameOfProd,
+                             Double weight,
+                             Double price,
+                             Long prodId,
+                             LocalDateTime dateTime) {
+        this.checkId = checkId;
+        this.nameOfProd = nameOfProd;
+        this.weight = weight;
+        this.price = price;
+        this.prodId = prodId;
+        this.dateTime = dateTime;
+    }
+
     public Long getProdId() {
         return prodId;
     }
@@ -109,22 +126,5 @@ public class CheckWithProducts {
                 ", prodId=" + prodId +
                 ", dateTime=" + dateTime +
                 '}';
-    }
-
-    public CheckWithProducts() {
-    }
-
-    public CheckWithProducts(Long checkId,
-                             String nameOfProd,
-                             Double weight,
-                             Double price,
-                             Long prodId,
-                             LocalDateTime dateTime) {
-        this.checkId = checkId;
-        this.nameOfProd = nameOfProd;
-        this.weight = weight;
-        this.price = price;
-        this.prodId = prodId;
-        this.dateTime = dateTime;
     }
 }

@@ -46,6 +46,10 @@ public class CheckIdService {
 
     }
 
+    public void saveCheck(CheckId check) {
+        checkIdRepo.save(check);
+    }
+
     public boolean existsCheck(long id){
         return checkIdRepo.existsById(id);
     }

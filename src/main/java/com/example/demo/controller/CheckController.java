@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.CheckId;
 import com.example.demo.entity.ProductInStore;
 import com.example.demo.service.CheckIdService;
 import com.example.demo.service.CheckWithProductsService;

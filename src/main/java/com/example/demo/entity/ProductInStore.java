@@ -44,16 +44,6 @@ public class ProductInStore implements Serializable {
     public ProductInStore() {
     }
 
-    @Override
-    public String toString() {
-        return "ProductInStore{" +
-                "id=" + id +
-                ", nameOfProduct='" + nameOfProduct + '\'' +
-                ", priceForOne=" + priceForOne +
-                ", weight=" + weight +
-                '}';
-    }
-
     public Long getId() {
         return id;
     }
@@ -84,5 +74,15 @@ public class ProductInStore implements Serializable {
 
     public void setWeight(Double weight) {
         this.weight = weight;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductInStore{" +
+                "id=" + id +
+                ", nameOfProduct='" + nameOfProduct + '\'' +
+                ", priceForOne=" + priceForOne +
+                ", weight=" + weight +
+                '}';
     }
 }

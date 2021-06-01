@@ -5,6 +5,7 @@ import com.example.demo.service.CheckIdService;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +19,7 @@ public class CancelController {
     CheckIdService checkIdService;
 
     @GetMapping
-    public String showCheck(HttpServletRequest model) {
-//        model.getSession().setAttribute("check", null);
+    public String showCheck(Model model) {
         return "cancel";
     }
 
@@ -27,11 +27,9 @@ public class CancelController {
     public String deleteByIdCheck(
             @RequestParam(name = "idProd") Long id,
             HttpServletRequest model) {
-//        if (checkIdService.existsCheck(id)) {
         CheckId checkId = checkIdService.findById(id);
         isTheSameChecks(model, checkId);
         checkIdService.deleteCheck(checkId);
-//        }
         return "redirect:/cancel";
     }
 
