@@ -1,9 +1,6 @@
 package com.example.demo.entity;
 
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -12,12 +9,14 @@ public class ProductInStore implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(
             nullable = false,
             name = "name_of_product",
             columnDefinition = "TEXT"
     )
     private String nameOfProduct;
+
     @Column(
             nullable = false,
             name = "price_for_one"
@@ -28,7 +27,6 @@ public class ProductInStore implements Serializable {
             name = "weight"
     )
     private Double weight;
-
 
     public ProductInStore(Long id, String nameOfProduct, Double priceForOne, Double weight) {
         this.id = id;
@@ -44,6 +42,16 @@ public class ProductInStore implements Serializable {
     }
 
     public ProductInStore() {
+    }
+
+    @Override
+    public String toString() {
+        return "ProductInStore{" +
+                "id=" + id +
+                ", nameOfProduct='" + nameOfProduct + '\'' +
+                ", priceForOne=" + priceForOne +
+                ", weight=" + weight +
+                '}';
     }
 
     public Long getId() {

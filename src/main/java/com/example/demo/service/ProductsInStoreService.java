@@ -17,11 +17,18 @@ public class ProductsInStoreService {
         repo.save(new ProductInStore(name, price, weight));
     }
 
+    public ProductInStore findById(long id) {
+        return repo.findById(id);
+    }
+
+
+
+
     public void updateProductById(long id, Double price, Double weight) {
         repo.updateProductInStore(price, weight, id);
     }
 
-    public void  deleteProductInStoreById(long id) {
+    public void deleteProductInStoreById(long id) {
         repo.deleteProductInStoreById(id);
     }
 }

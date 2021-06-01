@@ -1,0 +1,1 @@
+INSERT INTO check_id VALUES ();

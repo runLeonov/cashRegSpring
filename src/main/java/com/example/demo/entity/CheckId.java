@@ -1,18 +1,15 @@
 package com.example.demo.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class CheckID {
+public class CheckId {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public CheckID() {
+    public CheckId() {
     }
 
     @OneToMany
@@ -21,6 +18,14 @@ public class CheckID {
 
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "CheckId{" +
+                "id=" + id +
+                ", products=" + products +
+                '}';
     }
 
     public void setId(Long id) {
@@ -35,7 +40,7 @@ public class CheckID {
         this.products = products;
     }
 
-    public CheckID(Long id) {
+    public CheckId(Long id) {
         this.id = id;
     }
 }

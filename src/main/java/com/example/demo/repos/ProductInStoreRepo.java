@@ -8,14 +8,17 @@ import org.springframework.data.repository.query.Param;
 
 public interface ProductInStoreRepo extends CrudRepository<ProductInStore, Long> {
     ProductInStore findById(long id);
+
+    ProductInStore findByNameOfProduct(String name);
+
     @Modifying
     @Query("UPDATE ProductInStore p SET p.priceForOne = :price, p.weight = :weight WHERE p.id = :id")
     void updateProductInStore(
-            @Param(value = "price")Double price,
-            @Param(value = "weight")Double weight,
+            @Param(value = "price") Double price,
+            @Param(value = "weight") Double weight,
             @Param(value = "id") Long id);
 
-    void deleteProductInStoreById(@Param(value = "id") Long id);
 
+    void deleteProductInStoreById(@Param(value = "id") Long id);
 
 }

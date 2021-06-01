@@ -1,11 +1,8 @@
 package com.example.demo.entity;
 
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 public class CheckWithProducts {
@@ -34,6 +31,32 @@ public class CheckWithProducts {
             name = "price"
     )
     private Double price;
+    @Column(
+            nullable = false,
+            name = "prod_id"
+    )
+    private Long prodId;
+    @Column(
+            name = "date_time",
+            columnDefinition = "TIMESTAMP"
+    )
+    private LocalDateTime dateTime;
+
+    public Long getProdId() {
+        return prodId;
+    }
+
+    public void setProdId(Long prodId) {
+        this.prodId = prodId;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
 
     public Long getId() {
         return id;
@@ -73,5 +96,35 @@ public class CheckWithProducts {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "CheckWithProducts{" +
+                "id=" + id +
+                ", checkId=" + checkId +
+                ", nameOfProd='" + nameOfProd + '\'' +
+                ", weight=" + weight +
+                ", price=" + price +
+                ", prodId=" + prodId +
+                ", dateTime=" + dateTime +
+                '}';
+    }
+
+    public CheckWithProducts() {
+    }
+
+    public CheckWithProducts(Long checkId,
+                             String nameOfProd,
+                             Double weight,
+                             Double price,
+                             Long prodId,
+                             LocalDateTime dateTime) {
+        this.checkId = checkId;
+        this.nameOfProd = nameOfProd;
+        this.weight = weight;
+        this.price = price;
+        this.prodId = prodId;
+        this.dateTime = dateTime;
     }
 }

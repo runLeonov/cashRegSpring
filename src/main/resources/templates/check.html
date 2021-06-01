@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>CHECK</h1>
+<form method="post" action="check/addToCheck">
+    <h4>CREATE CHECK</h4>
+    <input type="number" name="idProd" placeholder="id"/>
+    <input type="number" name="nameOfProd" placeholder="name"/>
+    <input type="number" name="weightProd" placeholder="weight"/>
+    <input type="submit" value="ADD TO CHECK"/>
+</form>
+<form method="post" action="check/createCheck">
+    <input type="submit" value="CREATE CHECK"/>
+</form>
+<form method="post" action="check/clearCheck">
+    <input type="submit" value="CLEAR CHECK"/>
+</form>
+<table style="border: black 2px solid">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>weight</th>
+    </tr>
+
+    <tr th:each="prod: ${session.productss}">
+        <td th:text="${prod.id}"></td>
+        <td th:text="${prod.nameOfProduct}"></td>
+        <td th:text="${prod.priceForOne}"></td>
+        <td th:text="${prod.weight}"></td>
+
+    </tr>
+</table>
+</body>
+</html>

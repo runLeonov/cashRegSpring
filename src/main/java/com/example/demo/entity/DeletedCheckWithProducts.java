@@ -1,9 +1,6 @@
 package com.example.demo.entity;
 
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity
@@ -48,6 +45,17 @@ public class DeletedCheckWithProducts {
 
     public void setCheckId(Long checkId) {
         this.checkId = checkId;
+    }
+
+    @Override
+    public String toString() {
+        return "DeletedCheckWithProducts{" +
+                "id=" + id +
+                ", checkId=" + checkId +
+                ", nameOfProd='" + nameOfProd + '\'' +
+                ", weight=" + weight +
+                ", price=" + price +
+                '}';
     }
 
     public String getNameOfProd() {
