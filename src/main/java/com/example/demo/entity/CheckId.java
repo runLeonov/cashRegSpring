@@ -12,24 +12,20 @@ public class CheckId {
     public CheckId() {
     }
 
-    public CheckId(List<CheckWithProducts> products) {
-        this.products = products;
-    }
-
     @OneToMany
     @JoinColumn(name = "check_id")
     private List<CheckWithProducts> products;
 
-    public Long getId() {
-        return id;
+    public CheckId(Long id) {
+        this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "CheckId{" +
-                "id=" + id +
-                ", products=" + products.toString() +
-                '}';
+    public CheckId(List<CheckWithProducts> products) {
+        this.products = products;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
@@ -44,9 +40,13 @@ public class CheckId {
         this.products = products;
     }
 
-    public CheckId(Long id) {
-        this.id = id;
-    }
 
+    @Override
+    public String toString() {
+        return "CheckId{" +
+                "id=" + id +
+                ", products=" + products.toString() +
+                '}';
+    }
 
 }
