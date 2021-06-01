@@ -13,5 +13,4 @@ public interface CheckWithProductsRepo extends CrudRepository<CheckWithProducts,
     List<CheckWithProducts> findCheckWithProductsByCheckId(Long id);
 
 
-
 }

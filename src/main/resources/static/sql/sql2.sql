@@ -1,1 +1,1 @@
-INSERT INTO check_id VALUES ();
+DELETE FROM check_id WHERE id = 2;

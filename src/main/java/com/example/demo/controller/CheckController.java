@@ -24,7 +24,6 @@ public class CheckController {
     CheckWithProductsService checkService;
     @Autowired
     CheckIdService checkIdService;
-//    List<ProductInStore> products = new Model().;
 
     @GetMapping
     public String showCheck(HttpServletRequest model) {
@@ -33,7 +32,6 @@ public class CheckController {
                 (ArrayList<ProductInStore>) model.getSession().getAttribute("productss");
         if (products == null)
             products = new ArrayList<>();
-//        products.add(new ProductInStore(1L, "dsa", 78.0, 92.0));
         model.getSession().setAttribute("productss", products);
         return "check";
     }
@@ -41,7 +39,6 @@ public class CheckController {
     @PostMapping("addToCheck")
     public String addToCheck(
             @RequestParam(name = "idProd") Long id,
-//            @RequestParam(name = "nameOfProd") String nameOfProd,
             @RequestParam(name = "weightProd") Double weight,
             HttpServletRequest model) {
         @SuppressWarnings("unchecked")
@@ -54,7 +51,6 @@ public class CheckController {
         product.setPriceForOne(weight * product.getPriceForOne());
         product.setWeight(weight);
         products.add(product);
-//        System.out.println(products.get(0));
         model.getSession().setAttribute("productss", products);
         return "redirect:/check";
     }

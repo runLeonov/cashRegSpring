@@ -21,9 +21,6 @@ public class ProductsInStoreService {
         return repo.findById(id);
     }
 
-
-
-
     public void updateProductById(long id, Double price, Double weight) {
         repo.updateProductInStore(price, weight, id);
     }

@@ -24,7 +24,7 @@ public class CheckId {
     public String toString() {
         return "CheckId{" +
                 "id=" + id +
-                ", products=" + products +
+                ", products=" + products.toString() +
                 '}';
     }
 
@@ -43,4 +43,6 @@ public class CheckId {
     public CheckId(Long id) {
         this.id = id;
     }
+
+
 }
