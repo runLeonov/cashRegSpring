@@ -59,6 +59,18 @@ public class CheckWithProducts {
         this.dateTime = dateTime;
     }
 
+    public CheckWithProducts(String nameOfProd,
+                             Double weight,
+                             Double price,
+                             Long prodId,
+                             LocalDateTime dateTime) {
+        this.nameOfProd = nameOfProd;
+        this.weight = weight;
+        this.price = price;
+        this.prodId = prodId;
+        this.dateTime = dateTime;
+    }
+
     public Long getProdId() {
         return prodId;
     }
@@ -126,5 +138,31 @@ public class CheckWithProducts {
                 ", prodId=" + prodId +
                 ", dateTime=" + dateTime +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CheckWithProducts that = (CheckWithProducts) o;
+
+        if (checkId != null ? !checkId.equals(that.checkId) : that.checkId != null) return false;
+        if (nameOfProd != null ? !nameOfProd.equals(that.nameOfProd) : that.nameOfProd != null) return false;
+        if (weight != null ? !weight.equals(that.weight) : that.weight != null) return false;
+        if (price != null ? !price.equals(that.price) : that.price != null) return false;
+        if (prodId != null ? !prodId.equals(that.prodId) : that.prodId != null) return false;
+        return dateTime != null ? dateTime.equals(that.dateTime) : that.dateTime == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = checkId != null ? checkId.hashCode() : 0;
+        result = 31 * result + (nameOfProd != null ? nameOfProd.hashCode() : 0);
+        result = 31 * result + (weight != null ? weight.hashCode() : 0);
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (prodId != null ? prodId.hashCode() : 0);
+        result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
+        return result;
     }
 }

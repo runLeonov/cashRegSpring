@@ -16,6 +16,12 @@ public class CheckId {
     @JoinColumn(name = "check_id")
     private List<CheckWithProducts> products;
 
+    @OneToMany
+    @JoinColumn(name = "check_id")
+    private List<DeletedCheckWithProducts> deletedCheckWithProducts;
+
+
+
     public CheckId(Long id) {
         this.id = id;
     }
@@ -40,6 +46,13 @@ public class CheckId {
         this.products = products;
     }
 
+    public List<DeletedCheckWithProducts> getDeletedCheckWithProducts() {
+        return deletedCheckWithProducts;
+    }
+
+    public void setDeletedCheckWithProducts(List<DeletedCheckWithProducts> deletedCheckWithProducts) {
+        this.deletedCheckWithProducts = deletedCheckWithProducts;
+    }
 
     @Override
     public String toString() {
@@ -49,4 +62,18 @@ public class CheckId {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CheckId checkId = (CheckId) o;
+
+        return id != null ? id.equals(checkId.id) : checkId.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }

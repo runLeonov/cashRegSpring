@@ -1,13 +1,18 @@
 package com.example.demo.entity;
 
 
+import lombok.Getter;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+
 
 @Entity
 public class ProductInStore implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull(message = "Cannot be empty!")
     private Long id;
 
     @Column(
@@ -84,5 +89,20 @@ public class ProductInStore implements Serializable {
                 ", priceForOne=" + priceForOne +
                 ", weight=" + weight +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ProductInStore product = (ProductInStore) o;
+
+        return id != null ? id.equals(product.id) : product.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

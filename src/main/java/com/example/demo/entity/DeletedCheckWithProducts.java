@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class DeletedCheckWithProducts {
@@ -30,6 +31,26 @@ public class DeletedCheckWithProducts {
             name = "price"
     )
     private Double price;
+    @Column
+    private LocalDateTime timeOfCreate;
+    @Column
+    private LocalDateTime timeOfDeleted;
+
+    public LocalDateTime getTimeOfDeleted() {
+        return timeOfDeleted;
+    }
+
+    public void setTimeOfDeleted(LocalDateTime timeOfDeleted) {
+        this.timeOfDeleted = timeOfDeleted;
+    }
+
+    public LocalDateTime getTimeOfCreate() {
+        return timeOfCreate;
+    }
+
+    public void setTimeOfCreate(LocalDateTime timeOfCreate) {
+        this.timeOfCreate = timeOfCreate;
+    }
 
     public Long getId() {
         return id;
@@ -80,5 +101,23 @@ public class DeletedCheckWithProducts {
                 ", weight=" + weight +
                 ", price=" + price +
                 '}';
+    }
+
+    public DeletedCheckWithProducts() {
+    }
+
+    public DeletedCheckWithProducts(Long checkId,
+                                    String nameOfProd,
+                                    Double weight,
+                                    Double price,
+                                    LocalDateTime timeOfCreate,
+                                    LocalDateTime timeOfDeleted
+    ) {
+        this.checkId = checkId;
+        this.nameOfProd = nameOfProd;
+        this.weight = weight;
+        this.price = price;
+        this.timeOfCreate = timeOfCreate;
+        this.timeOfDeleted = timeOfDeleted;
     }
 }

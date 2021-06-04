@@ -6,7 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface CheckWithProductsRepo extends CrudRepository<CheckWithProducts, Long> {
-    List<CheckWithProducts> findCheckWithProductsByCheckId(Long id);
+    List<CheckWithProducts> findAllByCheckId(long id);
 
+    CheckWithProducts getFirstByOrderByCheckIdDesc();
 
 }

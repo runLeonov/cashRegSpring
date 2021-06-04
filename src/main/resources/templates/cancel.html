@@ -8,28 +8,37 @@
 <h1>CANCEL</h1>
 <form method="post" action="cancel/showLast">
     <h4>SHOW LAST CHECK</h4>
+    <div th:if="${param.noChecks != null and param.noChecks[0] == 'true'}">No checks in database</div>
     <input type="submit" value="SHOW LAST CHECK"/>
 </form>
 <form method="post" action="cancel/deleteLast">
     <h4>DELETE LAST CHECK</h4>
+    <div th:if="${param.checkDeletedLast != null and param.checkDeletedLast[0] == 'true'}">Check was deleted!</div>
+    <div th:if="${param.checkDeletedLast != null and param.checkDeletedLast[0] == 'false'}">Check wasn't found!</div>
     <input type="submit" value="DELETE LAST CHECK"/>
 </form>
 <form method="post" action="cancel/showById">
     <h4>SHOW CHECK BY ID</h4>
+    <div th:if="${param.checkFound != null and param.checkFound[0] == 'false'}">No checks in database by this id</div>
     <input type="number" name="idProd" placeholder="id to show"/>
     <input type="submit" value="SHOW CHECK BY ID"/>
 </form>
 <form method="post" action="cancel/deleteById">
     <h4>DELETE CHECK BY ID</h4>
+    <div th:if="${param.checkDeleted != null and param.checkDeleted[0] == 'true'}">Check was deleted!</div>
+    <div th:if="${param.checkDeleted != null and param.checkDeleted[0] == 'false'}">Check wasn't found!</div>
     <input type="number" name="idProd" placeholder="id to delete"/>
     <input type="submit" value="DELETE CHECK BY ID"/>
 </form>
-<!--<form method="post" action="cancel/createCheck">-->
-<!--    <input type="submit" value="CREATE CHECK"/>-->
-<!--</form>-->
-<!--<form method="post" action="cancel/clearCheck">-->
-<!--    <input type="submit" value="CLEAR CHECK"/>-->
-<!--</form>-->
+
+<form method="post" action="cancel/createX">
+    <h4>CREATE X</h4>
+    <input type="submit" value="CREATE X REPORT"/>
+</form>
+<form method="post" action="cancel/createZ">
+    <h4>CREATE Z</h4>
+    <input type="submit" value="CREATE Z REPORT"/>
+</form>
 <table style="border: black 2px solid">
     <div th:if="${session.check != null}">
         <tr>

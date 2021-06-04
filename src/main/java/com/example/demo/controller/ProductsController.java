@@ -5,15 +5,18 @@ import com.example.demo.entity.ProductInStore;
 import com.example.demo.repos.ProductInStoreRepo;
 import com.example.demo.service.ProductsInStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Objects;
 
 
 @Controller
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping("products")
 public class ProductsController {
     @Autowired
@@ -30,39 +33,45 @@ public class ProductsController {
 
 
     @PostMapping("update")
-    public String updateProduct(
-            @RequestParam(name = "idProd") Long id,
-            @RequestParam(name = "priceProd", defaultValue = "10") Double price,
+    public ModelAndView updateProduct(
+            @RequestParam(name = "idProd", defaultValue = "1") Long id,
+            @RequestParam(name = "priceProd", defaultValue = "50") Double price,
             @RequestParam(name = "weightProd", defaultValue = "100") Double weight,
-            Model model
+            ModelMap modelMap
     ) {
-        service.updateProductById(id, price, weight);
-        Iterable<ProductInStore> products = repo.findAll();
-        model.addAttribute("productss", products);
-        return "redirect:/products";
+        if (Objects.nonNull(service.findById(id))) {
+            service.updateProductById(id, price, weight);
+            modelMap.addAttribute("updatedP", true);
+        } else {
+            modelMap.addAttribute("updatedP", false);
+        }
+        return new ModelAndView("redirect:/products", modelMap);
     }
 
     @PostMapping("add")
-    public String addProduct(
-            @RequestParam(name = "nameProdNew") String name,
-            @RequestParam(name = "priceProdNew", defaultValue = "10") Double price,
+    public ModelAndView addProduct(
+            @RequestParam(name = "nameProdNew", defaultValue = "EmptyProduct!") String name,
+            @RequestParam(name = "priceProdNew", defaultValue = "50") Double price,
             @RequestParam(name = "weightProdNew", defaultValue = "100") Double weight,
-            Model model
+            ModelMap modelMap
     ) {
+        modelMap.addAttribute("addedP", true);
         repo.save(new ProductInStore(name, price, weight));
-        Iterable<ProductInStore> products = repo.findAll();
-        model.addAttribute("productss", products);
-        return "redirect:/products";
+        return new ModelAndView("redirect:/products", modelMap);
     }
 
     @PostMapping("delete")
-    public String deleteProduct(
-            @RequestParam(name = "idProdToDel") Long id,
-            Model model
+    public ModelAndView deleteProduct(
+            @RequestParam(name = "idProdToDel", defaultValue = "100") Long id,
+            ModelMap modelMap
     ) {
-        service.deleteProductInStoreById(id);
-        Iterable<ProductInStore> products = repo.findAll();
-        model.addAttribute("productss", products);
-        return "redirect:/products";
+        if (Objects.nonNull(service.findById(id))) {
+            service.deleteProductInStoreById(id);
+            modelMap.addAttribute("deleteP", true);
+        } else {
+            modelMap.addAttribute("deleteP", false);
+        }
+        return new ModelAndView("redirect:/products", modelMap);
     }
+
 }

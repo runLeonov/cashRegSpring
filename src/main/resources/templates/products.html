@@ -9,6 +9,8 @@
 PRODUCTS
 <form method="post" action="products/update">
     <h4>UPDATE PRODUCT</h4>
+    <div th:if="${param.updatedP != null and param.updatedP[0] == 'true'}">Prod was updated!</div>
+    <div th:if="${param.updatedP != null and param.updatedP[0] == 'false'}">Not found product with this id!</div>
     <input type="number" name="idProd" placeholder="id"/>
     <input type="number" name="priceProd" placeholder="new price"/>
     <input type="number" name="weightProd" placeholder="new weight"/>
@@ -17,6 +19,7 @@ PRODUCTS
 
 <form method="post" action="products/add">
     <h4>ADD NEW PRODUCT</h4>
+    <div th:if="${param.addedP != null and param.addedP[0] == 'true'}">Added new prod!</div>
     <input type="text" name="nameProdNew" placeholder="name"/>
     <input type="number" name="priceProdNew" placeholder="price"/>
     <input type="number" name="weightProdNew" placeholder="weight"/>
@@ -26,6 +29,8 @@ PRODUCTS
 
 <form method="post" action="products/delete">
     <h4>DELETE PRODUCT</h4>
+    <div th:if="${param.deleteP != null and param.deleteP[0] == 'true'}">Product deleted!</div>
+    <div th:if="${param.deleteP != null and param.deleteP[0] == 'false'}">Product not found!</div>
     <input type="number" name="idProdToDel" placeholder="id for del"/>
     <input type="submit" value="DELETE"/>
 </form>

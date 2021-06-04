@@ -13,8 +13,8 @@ public class ProductsInStoreService {
     @Autowired
     ProductInStoreRepo repo;
 
-    public void addProductToStore(String name, Double price, Double weight) {
-        repo.save(new ProductInStore(name, price, weight));
+    public boolean addProductCheck(ProductInStore product, Double weight) {
+        return weight < product.getWeight();
     }
 
     public ProductInStore findById(long id) {
@@ -22,10 +22,20 @@ public class ProductsInStoreService {
     }
 
     public void updateProductById(long id, Double price, Double weight) {
-        repo.updateProductInStore(price, weight, id);
+        ProductInStore product = repo.findById(id);
+        product.setWeight(weight);
+        product.setPriceForOne(price);
+        repo.save(product);
     }
 
     public void deleteProductInStoreById(long id) {
-        repo.deleteProductInStoreById(id);
+        ProductInStore product = repo.findById(id);
+        repo.delete(product);
+    }
+
+    public void updateWeightInStore(long id, Double weight) {
+        ProductInStore p = repo.findById(id);
+        p.setWeight(p.getWeight() - weight);
+        repo.save(p);
     }
 }
